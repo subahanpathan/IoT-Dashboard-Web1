@@ -1,0 +1,169 @@
+/* ================================
+   Base Styles
+   ================================ */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.card {
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode .card {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+.alert-container {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* ================================
+   Circuit Board Background
+   ================================ */
+body {
+  background-color: #071428; /* deep navy base */
+  background-image: radial-gradient(rgba(255,255,255,0.02) 0.5px, transparent 0.5px);
+  background-size: 12px 12px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'>\
+    <defs>\
+      <linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'>\
+        <stop offset='0' stop-color='%2300ffcc' stop-opacity='0.35'/>\
+        <stop offset='1' stop-color='%230099ff' stop-opacity='0.25'/>\
+      </linearGradient>\
+    </defs>\
+    <g stroke='url(%23g)' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'>\
+      <path d='M40 60 H300 M80 40 V160 M200 40 V160 M140 100 H500'/>\
+      <path d='M600 20 V180 H820 M700 40 H760 M760 40 V140'/>\
+      <path d='M900 100 H1100 M980 40 V220'/>\
+      <path d='M120 300 H380 M180 240 V380 M300 240 V380'/>\
+      <path d='M420 260 H740 M520 220 V340'/>\
+      <path d='M840 260 H1100 M960 220 V340'/>\
+    </g>\
+    <g fill='url(%23g)'>\
+      <circle cx='40' cy='60' r='3'/>\
+      <circle cx='300' cy='60' r='3'/>\
+      <circle cx='760' cy='40' r='3'/>\
+      <circle cx='1100' cy='100' r='3'/>\
+    </g>\
+  </svg>");
+  background-repeat: repeat;
+  background-size: 600px 400px;
+  opacity: 0.28;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 45%, rgba(255,255,255,0) 100%);
+  mix-blend-mode: screen;
+  opacity: 0.12;
+  animation: circuitGlow 8s linear infinite;
+}
+
+@keyframes circuitGlow {
+  0%   { transform: translateX(-40%); }
+  50%  { transform: translateX(40%); }
+  100% { transform: translateX(-40%); }
+}
+
+/* Dark mode version */
+body.dark-mode::before {
+  background-image: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'>\
+    <defs>\
+      <linearGradient id='gd' x1='0%' y1='0%' x2='100%' y2='100%'>\
+        <stop offset='0' stop-color='%2300ffd1' stop-opacity='0.28'/>\
+        <stop offset='1' stop-color='%2300b4ff' stop-opacity='0.18'/>\
+      </linearGradient>\
+    </defs>\
+    <g stroke='url(%23gd)' stroke-width='1.4' fill='none' stroke-linecap='round' stroke-linejoin='round'>\
+      <path d='M40 60 H300 M80 40 V160 M200 40 V160 M140 100 H500'/>\
+      <path d='M600 20 V180 H820 M700 40 H760 M760 40 V140'/>\
+      <path d='M900 100 H1100 M980 40 V220'/>\
+      <path d='M120 300 H380 M180 240 V380 M300 240 V380'/>\
+      <path d='M420 260 H740 M520 220 V340'/>\
+      <path d='M840 260 H1100 M960 220 V340'/>\
+    </g>\
+    <g fill='url(%23gd)'>\
+      <circle cx='40' cy='60' r='3'/>\
+      <circle cx='300' cy='60' r='3'/>\
+      <circle cx='760' cy='40' r='3'/>\
+      <circle cx='1100' cy='100' r='3'/>\
+    </g>\
+  </svg>");
+  background-repeat: repeat;
+  background-size: 600px 400px;
+  opacity: 0.20;
+}
+
+body.dark-mode::after {
+  opacity: 0.08;
+}
+
+/* ================================
+   Glass Effect (Cards, Navbar, Gauges, Graphs)
+   ================================ */    
+.card {
+  background: rgba(255, 255, 255, 0.9); /* light mode transparency */
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .card {
+  background: rgba(20, 20, 20, 0.85); /* dark mode transparency */
+  backdrop-filter: blur(6px);
+}
+
+.navbar {
+  background: rgba(0, 86, 179, 0.9) !important; /* light mode nav */
+  backdrop-filter: blur(6px);
+  border-radius: 0 0 16px 16px;
+}
+
+body.dark-mode .navbar {
+  background: rgba(0, 0, 0, 0.85) !important; /* dark mode nav */
+  backdrop-filter: blur(6px);
+}
+
+/* Gauges & Charts Containers */
+#temperatureGaugeContainer,
+#humidityGaugeContainer,
+#vibrationGaugeContainer,
+#dataChart {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  padding: 10px;
+}
+
+body.dark-mode #temperatureGaugeContainer,
+body.dark-mode #humidityGaugeContainer,
+body.dark-mode #vibrationGaugeContainer,
+body.dark-mode #dataChart {
+  background: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(6px);
+}
+
+/* Keep dashboard content above background */
+.container, .navbar, .card {
+  position: relative;
+  z-index: 1;
+}
